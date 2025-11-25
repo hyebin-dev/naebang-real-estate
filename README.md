@@ -20,12 +20,12 @@
   - 서울 부동산 실거래 데이터 전처리(JSON 포맷 통일), 필터/정렬 로직, 공공데이터 정규화 모듈 구현
 
 - **기술 스택**
-  - **Frontend**: HTML5, CSS3, Vanilla JavaScript (ES6+)
+  - **Frontend**: HTML5, CSS, Vanilla JavaScript (ES6+)
   - **지도/공공데이터**
     - Kakao Maps JavaScript SDK  
     - VWorld 행정구역 경계 API  
     - 공공데이터포털 서울 부동산 실거래 데이터 (전처리 후 JSON 사용)
-  - **개발 환경**: Git, GitHub, VS Code, Live Server / Python HTTP Server
+  - **개발 환경**: Git, GitHub, VS Code, Live Server
 
 ---
 
