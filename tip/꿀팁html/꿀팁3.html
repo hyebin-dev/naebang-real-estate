@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../img/로고.png">
+    <title>2026년 한국 부동산 시장 전망</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+    <link rel="stylesheet" href="../꿀팁css/꿀팁3.css">
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <h1><img src="../../img/KakaoTalk_20251111_154721082.png " width="90px">2026년 한국 부동산 시장 전망</h1>
+        <p>한국건설산업연구원,부동산R114,국토교통부 통계를 바탕으로 재해석 한 내용입니다.</p>
+    </header>
+
+    <main>
+        <section class="card-section">
+            <div class="card">
+                <h2 class="card-title"><img src="../../img/로고.png " width="40px" style="margin-right: 10px">주요 전망 요약</h2>
+                <div class="chart-grid">
+                    <div class="chart-item">
+                        <h3>전국 주택 전셋값</h3>
+                        <canvas id="rentChart"></canvas>
+                        <p class="chart-label">4.0% 상승</p>
+                    </div>
+                    <div class="chart-item">
+                        <h3>전국 매매가 상승률</h3>
+                        <canvas id="saleChart"></canvas>
+                        <p class="chart-label">0.8% 상승</p>
+                    </div>
+                </div>
+                <p class="summary-text">전셋값, 매매가 5배 상승 마지노선!</p>
+            </div>
+        </section>
+
+        <section class="card-section">
+            <div class="card">
+                <h2 class="card-title"><img src="../../img/로고.png" width="40px" style="margin-right: 10px">지역별 양극화 심화</h2>
+                <div class="chart-grid-region">
+                    <div class="chart-item-horizontal">
+                        <h3>수도권 부동산 매매 가격 예상</h3>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" style="width: 2.0%; background-color: red;"></div>
+                            <span class="progress-text">2.0% 상승</span>
+                        </div>
+                        <span class="sub-label">2.0% 상승</span>
+                    </div>
+                    <div class="text-item-region">
+                      <h3>수도권 입주물량</h3>
+                      <p>47.6%⬇️ <span>급감</span><br>
+                        <span class="span1">(2025 대비)</span></p>
+                      </div>
+                      <div class="chart-item-horizontal">
+                          <h3>비수도권 부동산 매매 가격 예상</h3>
+                          <div class="progress-bar-container">
+                              <div class="progress-bar" style="width: 0.5%; background-color: blue;"></div>
+                              <span class="progress-text">-0.5% 하락</span>
+                          </div>
+                          <span class="sub-label">-0.5% 하락</span>
+                      </div>
+                      <div class="text-item-region">
+                          <h3>비수도권 입주물량</h3>
+                          <p>10%⬇️<span>감소</span><br>
+                          <span class="span1">(2025 대비)</span></p>
+                      </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card-section">
+            <div class="card">
+                <h2 class="card-title"><img src="../../img/로고.png" width="40px" style="margin-right: 10px">공급 및 시장 심리</h2>
+                <div class="chart-grid-supply">
+                    <div class="chart-item-supply">
+                        <h3>주택 인허가/착공 추이</h3>
+                        <canvas id="supplyChart"></canvas>
+                        <p class="chart-label-sub">&copy; (국토교통부 통계 해석)</p>
+                    </div>
+                    <div class="chart-item-supply">
+                        <h3>2026년 집값 전망 (설문)</h3>
+                        <canvas id="sentimentChart"></canvas>
+                        <p class="chart-label-sub">&copy; 부동산R114(차년도 주택 시장 전망 설문조사)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="card-section">
+            <div class="card">
+                <h2 class="card-title"><img src="../../img/로고.png" width="40px" style="margin-right: 10px">전문가 의견</h2>
+                <div class="youtube-grid">
+                    <a href="https://www.youtube.com/watch?v=tenloda1wsM" target="_blank" class="youtube-link">
+                        <img src="https://img.youtube.com/vi/tenloda1wsM/hqdefault.jpg" alt="유튜브 썸네일" class="youtube-thumbnail">
+                        <div class="youtube-info">
+                            <h3>▶️ 2026년 집값 "더 무섭게 오른다"</h3>
+                            <p>youtube</p>
+                        </div>
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=tenloda1wsM" target="_blank" class="youtube-link">
+                        <img src="https://img.youtube.com/vi/tenloda1wsM/hqdefault.jpg" alt="유튜브 썸네일" class="youtube-thumbnail">
+                        <div class="youtube-info">
+                            <h3>▶️ 한국 아파트 싹다 물갈이 된다</h3>
+                            <p>youtube</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 부동산 전망 자료.</p>
+    </footer>
+</div>
+
+<script src="../꿀팁js/꿀팁3.js"></script>
+</body>
+</html>

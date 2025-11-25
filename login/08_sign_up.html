@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../img/로고.png">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="08_sign_up.css">
+</head>
+<body>
+    <div class="signup-container">
+    <div class="signup-box">
+        <h2 class="signup-title">회원가입</h2>
+        <p class="signup-subtitle">부동산 정보 사이트의 다양한 서비스를 경험해보세요.</p>
+        <form class="signup-form">
+            <div class="input-group">
+                <label class="label" for="name">이름</label>
+                <input type="text" class="name" id="name" name="name" placeholder="이름 입력">
+            </div>
+            <div class="input-group email">
+                <label class="label" for="email">Email</label>
+                <input type="email" class="email" id="email" name="email" placeholder="메일 주소" >
+                <span class="emailMsg" id="emailMsg"></span>
+            </div>
+            <div class="input-group id">
+                <label class="label" for="id">ID</label>
+                <input type="text" class="id" id="id" name="id" placeholder="아이디(5자 이상)" >
+                <span class="idMsg" id="idMsg"></span>
+            </div>
+            <div class="input-group">
+                <label class="label" for="password">비밀번호</label>
+                <input type="password" id="password" name="password" placeholder="비밀번호(8자 이상, 문자/숫자/특수문자 포함)">
+                <span class="passwordMsg" id="passwordMsg"></span>
+            </div>
+            <div class="input-group">
+                <label class="label" for="password-confirm">비밀번호 확인</label>
+                <input type="password" id="password-confirm" name="password-confirm" placeholder="비밀번호를 다시 한 번 입력하세요">
+                <span class="password-message" id="password-match-message"></span>
+            </div>
+            
+            <div class="terms-group">
+                <input type="checkbox" id="terms" name="terms">
+                <label for="terms"> <span class="flabel">*</span>서비스 이용약관 및 개인정보 처리방침에 동의합니다.</label>
+            </div>
+
+            <button type="submit" class="btn-signup" id="signUpBtn">가입하기</button>
+        </form>
+        <div class="login-redirect">
+            이미 계정이 있으신가요? <a href="07_login.html" class="link-login">로그인</a>
+        </div>
+    </div>
+</div>
+<script>
+    console.log(document.getElementById('terms'));
+</script>
+<script src="08_passwordCheck.js"></script>
+<script src="login_sign_up.js"></script>
+<script src="08_sign_up.js"></script>
+</body>
+</html>

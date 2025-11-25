@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<!-- estateData/estateData.html - 서울 주거 실거래 데이터 필터/테이블 화면을 렌더링하는 페이지 -->
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../img/로고.png">
+  <title>내방 · 서울 주거 시장동향</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 상단 헤더 -->
+  <header class="page-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="../main/01_main.html" class="brand" aria-label="내방 홈으로">
+          <img src="../img/KakaoTalk_20251111_154721082.png" alt="내방 로고" class="brand-logo">
+        </a>
+        <h1 class="visually-quiet-title">서울 주거 시장동향</h1>
+      </div>
+
+      <nav class="nav-menu">
+        <ul class="menu1">
+          <li>
+            <a href="#categories" class="nav-item">🏠 내방찾기</a>
+            <ul class="submenu1">
+              <li>
+                <a href="../map/map.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                  </svg>
+                  지도로 내방 찾기
+                </a>
+              </li>
+              <li><a href="../favorites/favorites.html">❤️ 내가 찜한 목록</a></li>
+              <li><a href="../estateData/estateData.html">📈 시장동향</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <ul class="menu2">
+          <li>
+            <a href="#" class="nav-item">📜 공지사항</a>
+            <ul class="submenu2">
+              <li><a href="../policy/이용약관.html">📄 이용약관</a></li>
+              <li><a href="../policy/개인정보처리방침.html">🔒 개인정보처리방침</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <ul class="menu3">
+          <li>
+            <a href="#" class="nav-item">💬 커뮤니티</a>
+            <ul class="submenu3">
+              <li><a href="../policy/가이드라인.html">✅ 커뮤니티 가이드라인</a></li>
+              <li><a href="../main/01_main.html#post-card">🍯 꿀팁 보기</a></li>
+              <li><a href="../board/board.html">📝 자유게시판</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <ul class="menu4">
+          <li>
+            <a href="#" class="nav-item">📞 고객센터</a>
+            <ul class="submenu4">
+              <li><a href="../policy/자주묻는질문.html">❓ 자주묻는 질문</a></li>
+              <li><a href="../board/custMainPage.html">☎️ 1:1문의</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- 히어로 -->
+    <div class="hero">
+      <div class="hero-inner">
+        <nav class="breadcrumbs" aria-label="breadcrumb">
+          <a href="../main/01_main.html">홈</a>
+          <span aria-hidden="true">›</span>
+          <a>내방찾기</a>
+          <span aria-hidden="true">›</span>
+          <span class="current">시장동향</span>
+        </nav>
+        <div class="hero-heading">
+          <h2 class="hero-title">서울 주거 시장동향</h2>
+          <p class="hero-sub">
+            최근 3년간 실거래 데이터를 기반으로 아파트·오피스텔·단독/다가구·연립다세대의
+            <strong>매매/전월세</strong> 추세를 유형·지역별로 비교합니다.
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 빠른 카테고리 -->
+  <section class="quick-filter-bar shell">
+    <button class="quick-filter-btn active" data-property="all" data-deal="all" type="button">전체</button>
+    <button class="quick-filter-btn" data-property="apartment" data-deal="trade" type="button">아파트 매매</button>
+    <button class="quick-filter-btn" data-property="apartment" data-deal="rent" type="button">아파트 전월세</button>
+    <button class="quick-filter-btn" data-property="officetel" data-deal="trade" type="button">오피스텔 매매</button>
+    <button class="quick-filter-btn" data-property="officetel" data-deal="rent" type="button">오피스텔 전월세</button>
+    <button class="quick-filter-btn" data-property="house" data-deal="trade" type="button">단독/다가구 매매</button>
+    <button class="quick-filter-btn" data-property="house" data-deal="rent" type="button">단독/다가구 전월세</button>
+    <button class="quick-filter-btn" data-property="villa" data-deal="trade" type="button">연립다세대 매매</button>
+    <button class="quick-filter-btn" data-property="villa" data-deal="rent" type="button">연립다세대 전월세</button>
+  </section>
+
+  <!-- 필터 패널 -->
+  <section class="filter-panel shell">
+    <!-- 1행: 핵심 필터 -->
+    <div class="filter-row essential-row">
+      <label>
+        매물 유형
+        <select id="propertyTypeFilter">
+          <option value="all">전체 (모든 유형)</option>
+          <option value="apartment">아파트</option>
+          <option value="officetel">오피스텔</option>
+          <option value="house">단독/다가구</option>
+          <option value="villa">연립다세대</option>
+        </select>
+      </label>
+      <label>
+        거래 유형
+        <select id="dealTypeFilter">
+          <option value="all">전체 (매매 + 전월세)</option>
+          <option value="trade">매매</option>
+          <option value="rent">전월세</option>
+        </select>
+      </label>
+      <label class="region-group">
+        지역
+        <div class="region-inline">
+          <select id="guFilter">
+            <option value="all">서울 전체</option>
+          </select>
+          <select id="dongFilter" aria-label="동 선택">
+            <option value="all">전체 동</option>
+          </select>
+        </div>
+      </label>
+      <label>
+        검색어 (건물명/동)
+        <input id="keywordFilter" type="text" placeholder="예: 인왕산아이파크, 무악동">
+      </label>
+    </div>
+
+    <!-- 2행: 세부 조건 -->
+    <div class="filter-row detail-row">
+      <label>
+        연도
+        <select id="yearFilter">
+          <option value="all">전체 연도</option>
+        </select>
+      </label>
+      <label>
+        최소 가격(만원)
+        <input id="minPriceFilter" type="number" placeholder="예: 50000">
+      </label>
+      <label>
+        최대 가격(만원)
+        <input id="maxPriceFilter" type="number" placeholder="예: 200000">
+      </label>
+      <label>
+        정렬 기준
+        <select id="sortField">
+          <option value="priceDesc">가격 높은순</option>
+          <option value="dateDesc">최신 계약일순</option>
+          <option value="areaDesc">전용면적 큰순</option>
+        </select>
+      </label>
+      <label>
+        최소 전용면적(㎡ 기준)
+        <input id="minAreaFilter" type="number" placeholder="예: 30">
+      </label>
+      <label>
+        최대 전용면적(㎡ 기준)
+        <input id="maxAreaFilter" type="number" placeholder="예: 150">
+      </label>
+
+      <div class="page-and-unit">
+        <div class="area-unit-group">
+          <span class="area-unit-label">면적 단위</span>
+          <div>
+            <button
+              class="area-unit-toggle active"
+              data-unit="m2"
+              id="areaUnitM2"
+              type="button"
+            >
+              ㎡
+            </button>
+            <button
+              class="area-unit-toggle"
+              data-unit="py"
+              id="areaUnitPy"
+              type="button"
+            >
+              평
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 필터 적용/초기화 버튼 -->
+    <div class="filter-row filter-row-bottom">
+      <div class="filter-buttons">
+        <button id="applyFilterBtn" class="primary-btn" type="button">필터 적용</button>
+        <button id="resetFilterBtn" class="secondary-btn" type="button">필터 초기화</button>
+      </div>
+      <div class="filter-info">
+        <span id="resultCount" aria-live="polite" role="status">-</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 결과 테이블 -->
+  <section class="table-section shell">
+    <div class="table-card">
+      <div class="table-head">
+        <div class="table-title">검색 결과</div>
+      </div>
+      <table id="dealTable">
+        <thead>
+          <tr>
+            <th class="col-rank">순위</th>
+            <th class="col-type">유형</th>
+            <th class="col-date">계약일</th>
+            <th class="col-gu">구</th>
+            <th class="col-dong">법정동</th>
+            <th class="col-name">건물명</th>
+            <th id="areaHeader" class="col-area">전용면적(㎡)</th>
+            <th class="col-floor">층</th>
+            <th class="col-price">금액</th>
+          </tr>
+        </thead>
+        <tbody id="dealTableBody">
+          <tr id="initialRow">
+            <td colspan="9" style="text-align:center; color:#6b7280;">
+              데이터 불러오는 중…
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div id="pagination" class="pagination"></div>
+    </div>
+
+    <p class="source-note">자료 출처: 국토교통부 실거래가 공개시스템 (RTMS)</p>
+  </section>
+
+  <!-- footer -->
+  <footer class="page-footer shell">
+    <p>© 2025 Naebang • 모두의 내방찾기</p>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

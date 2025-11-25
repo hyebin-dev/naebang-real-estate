@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* 전체 페이지 기본 스타일 */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f7f9fc; /* 은은한 배경색 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* 메인 컨테이너 */
+#Container {
+    width: 100%;
+    max-width: 420px; /* 최대 폭 설정 */
+    background-color: #ffffff;
+    border-radius: 16px; /* 둥근 모서리 */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+/* 폼 공통 스타일 */
+#Form, #resetPasswordForm {
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    color: #334155;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* 입력 필드 그룹 */
+div {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-size: 0.95rem;
+    color: #475569;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #cbd5e1; /* 연한 테두리 */
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #334155;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #3b82f6; /* 포커스 시 파란색 강조 */
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* 에러 메시지 */
+.error-message,
+.emailMsg {
+    color: #ef4444; /* 빨간색 */
+    font-size: 0.85rem;
+    margin-top: 5px;
+    margin-bottom: 0;
+    min-height: 18px; /* 레이아웃 밀림 방지 */
+}
+
+/* 버튼 공통 스타일 */
+button[type="submit"] {
+    width: 100%;
+    padding: 14px;
+    background-color: #3b82f6; /* 메인 파란색 */
+    color: white;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    margin-top: 0;
+}
+
+button[type="submit"]:hover {
+    background-color: #2563eb; /* 마우스 오버 시 더 진하게 */
+    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.4);
+}
+
+button[type="submit"]:active {
+    background-color: #1e40af;
+}
+
+/* 로그인 리디렉션 링크 */
+.login-redirect {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+.link-login {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 5px;
+    transition: color 0.2s;
+}
+
+.link-login:hover {
+    color: #2563eb;
+    text-decoration: underline;
+}
+
+/* 모바일 반응형 최적화 */
+@media (max-width: 480px) {
+    body {
+        padding: 15px;
+    }
+    #Container {
+        padding: 25px 20px;
+        border-radius: 10px;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    button[type="submit"] {
+        padding: 12px;
+        font-size: 1rem;
+    }
+}

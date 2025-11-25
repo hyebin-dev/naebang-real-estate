@@ -1,0 +1,181 @@
+/* 전체 배경 설정: 로그인 화면과 유사하게 중앙 정렬 */
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f4f6f9; 
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+/* 회원가입 박스 스타일 */
+.signup-box {
+    width: 100%;
+    max-width: 450px; /* 로그인보다 약간 넓게 설정 */
+    padding: 40px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.signup-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #1e293b;
+    margin-bottom: 5px;
+}
+
+.signup-subtitle {
+    font-size: 15px;
+    color: #64748b;
+    margin-bottom: 30px;
+}
+
+/* 입력 그룹 */
+.input-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #764ba2; 
+}
+
+/* 입력 필드 */
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.input-group input:focus {
+    border-color: #764ba2;
+    outline: none;
+}
+
+/* 약관 동의 체크박스 */
+.terms-group {
+    text-align: left;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.terms-group input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.terms-group label {
+    font-size: 14px;
+    color: #1e293b;
+}
+.label::after{
+    content: ' *';
+    color: red;
+}
+.flabel{
+    position: absolute;
+    content: "*";
+    color: red;
+    left: 22px;
+}
+
+/* 가입 버튼 */
+.btn-signup {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-signup:hover {
+    background: linear-gradient(135deg, #596eca 0%, #7449a0 100%);
+}
+.emailMsg{
+    margin-top: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+    height: 15px;
+}
+.idMsg{
+    margin-top: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+    height: 15px;
+}
+.passwordMsg{
+    margin-top: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+    height: 15px;
+}
+.pass{
+    color: #10b981;
+}
+.fail{
+    color: #ef4444;
+}
+/* 하단 로그인 */
+.login-redirect {
+    margin-top: 25px;
+    font-size: 14px;
+    color: #64748b;
+}
+
+.link-login {
+    color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link-login:hover {
+    text-decoration: underline;
+}
+
+
+/* 비밀번호 중복 확인 메시지 스타일 */
+.password-message {
+    margin-top: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+    height: 15px; /* 공간 확보를 위해 높이를 미리 지정 */
+}
+.passwordMsg.is-invalid{
+    color: #ef4444;
+    border-color: #ef4444;
+}
+
+/* 성공 시 스타일 */
+.password-message.success {
+    color: #10b981; /* Tailwind CSS green-500 */
+}
+
+/* 실패 시 스타일 */
+.password-message.error {
+    color: #ef4444; /* Tailwind CSS red-500 */
+}
+
+/* 유효성 검사 실패 시 입력창 경계선을 빨간색으로 */
+.input-group input.is-invalid {
+    border-color: #ef4444;
+}

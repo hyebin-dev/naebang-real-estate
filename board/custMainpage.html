@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="../img/로고.png">
+  <title>고객센터 게시판</title>
+  <link rel="stylesheet" href="cust.css">
+  <style>
+    
+    #pagination {
+      text-align: center;
+      margin-top: 20px;
+    }
+    #pagination button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 10px;
+      margin: 0 3px;
+      cursor: pointer;
+    }
+    #pagination button:hover {
+      background-color: #0056b3;
+    }
+    #pagination button.active {
+      background-color: #003f88;
+    }
+    #pagination button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="left">
+      <img src="../img/KakaoTalk_20251111_154721082.png" alt="내방" class="logo" onclick="location.href='../main/01_main.html'">
+    </div>
+    <div class="center">
+      <h1 class="title">고객센터 게시판</h1>
+    </div>
+    <div class="right">
+      <button id="writeBtn" class="btn">✏️ 글쓰기</button>
+    </div>
+  </header>
+  <section id="listSection">
+    <h2>문의글 목록</h2>
+    <div id="postList"></div>
+    <div id="pagination"></div>
+  </section>
+
+  <script>
+    const postsPerPage = 5;
+    let currentPage = 1;
+
+    function getPosts() {
+      return JSON.parse(localStorage.getItem("customerPosts")) || [];
+    }
+    function savePosts(posts) {
+      localStorage.setItem("customerPosts", JSON.stringify(posts));
+    }
+
+    document.getElementById("writeBtn").addEventListener("click", () => {
+      location.href = "cust.html";
+    });
+
+    function renderPagination(totalPosts) {
+      const totalPages = Math.ceil(totalPosts / postsPerPage);
+      const pagination = document.getElementById("pagination");
+      pagination.innerHTML = "";
+
+      // 이전 버튼
+      const prevBtn = document.createElement("button");
+      prevBtn.textContent = "이전";
+      prevBtn.disabled = currentPage === 1;
+      prevBtn.onclick = () => { currentPage--; renderPostList(); };
+      pagination.appendChild(prevBtn);
+
+      // 페이지 번호 버튼
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement("button");
+        btn.textContent = i;
+        if (i === currentPage) btn.classList.add("active");
+        btn.onclick = () => { currentPage = i; renderPostList(); };
+        pagination.appendChild(btn);
+      }
+
+      // 다음 버튼
+      const nextBtn = document.createElement("button");
+      nextBtn.textContent = "다음";
+      nextBtn.disabled = currentPage === totalPages;
+      nextBtn.onclick = () => { currentPage++; renderPostList(); };
+      pagination.appendChild(nextBtn);
+    }
+
+    function renderPostList() {
+      const posts = getPosts();
+      const container = document.getElementById("postList");
+      container.innerHTML = "";
+
+      if (posts.length === 0) {
+        container.innerHTML = "<p>등록된 문의가 없습니다.</p>";
+        document.getElementById("pagination").innerHTML = "";
+        return;
+      }
+
+      const start = (currentPage - 1) * postsPerPage;
+      const end = start + postsPerPage;
+      const pagePosts = posts.slice(start, end);
+
+      pagePosts.forEach(post => {
+        const div = document.createElement("div");
+        div.className = "post";
+        div.innerHTML = `
+          <div class="post-title">${post.title}</div>
+          <div class="post-name">${post.name}</div>
+          <div class="post-date">${post.date}</div>
+        `;
+        div.addEventListener("click", () => {
+          if (post.name !== localStorage.getItem('name')) {
+            alert('작성자만 조회할 수 있습니다.');
+            return;
+          }
+          location.href = `cust.html?id=${post.id}`;
+        });
+        container.appendChild(div);
+      });
+
+      renderPagination(posts.length);
+    }
+
+    // 초기 렌더링
+    renderPostList();
+  </script>
+</body>
+</html>

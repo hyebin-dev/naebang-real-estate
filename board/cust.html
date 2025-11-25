@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>문의글 작성</title>
+  <link rel="stylesheet" href="custMainpage.css">
+  <style>
+    /* 균형형 헤더 */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #f1f5f9;
+      padding: 15px 40px;
+      border-bottom: 2px solid #007bff;
+    }
+
+    .left, .center, .right {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .left { justify-content: flex-start; }
+    .center { justify-content: center; }
+    .right { justify-content: flex-end; }
+
+    .logo {
+      height: 45px;
+      cursor: pointer;
+    }
+
+    .title {
+      color: #007bff;
+      margin: 0;
+      font-size: 1.8em;
+    }
+
+    .btn {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 14px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+
+    .btn-danger {
+      background-color: #dc3545;
+    }
+    .btn-danger:hover {
+      background-color: #b02a37;
+    }
+
+    section {
+      max-width: 800px;
+      margin: 40px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    textarea {
+      height: 200px;
+      resize: none;
+    }
+
+    /* 버튼 가운데 정렬 */
+    .btn-center {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ 상단 헤더 -->
+  <header>
+    <div class="left">
+      <img src="../img/KakaoTalk_20251111_154721082.png" alt="내방" class="logo" onclick="location.href='../main/01_main.html'">
+    </div>
+    <div class="center">
+      <h1 class="title">문의글 작성 / 보기</h1>
+    </div>
+    <div class="right">
+      <button id="backBtn" class="btn">목록으로</button>
+    </div>
+  </header>
+
+  <!-- ✅ 본문 -->
+  <section>
+    <input type="text" id="titleInput" placeholder="제목을 입력하세요">
+    <textarea id="contentInput" placeholder="내용을 입력하세요"></textarea>
+    <input type="text" id="name" disabled="true">
+
+    <!-- ✅ 버튼 영역 -->
+    <div class="btn-center">
+      <button id="saveBtn" class="btn">저장</button>
+      <button id="deleteBtn" class="btn btn-danger" style="display:none;">삭제</button>
+    </div>
+  </section>
+
+  <script src="cust.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const postId = params.get("id");
+
+    window.onload = function() {
+
+      const statusJson = localStorage.getItem("status");
+      let userName = "익명";
+
+      if (statusJson) {
+        try {
+          const statusObj = JSON.parse(statusJson);
+          if (statusObj && statusObj.name) userName = statusObj.name;
+        } catch (e) {
+          console.warn("status 파싱 실패:", e);
+        }
+      }
+
+      localStorage.setItem("name", userName);
+          
+      console.log('name' + localStorage.getItem("status"));
+      document.getElementById("name").value = userName;
+      document.getElementById("name").style.display = 'none';
+
+      // 수정 모드일 때만 삭제 버튼 보이기
+      if (postId) {
+        document.getElementById("deleteBtn").style.display = 'inline-block';
+      }
+    };
+
+    if (postId) {
+      const post = getPosts().find(p => p.id == postId);
+      if (post) {
+        document.getElementById("titleInput").value = post.title;
+        document.getElementById("contentInput").value = post.content;
+        document.getElementById("name").value = post.name;
+      }
+    }
+
+    // ✅ 저장 버튼
+    document.getElementById("saveBtn").addEventListener("click", () => {
+      const title = document.getElementById("titleInput").value.trim();
+      const content = document.getElementById("contentInput").value.trim();
+      const name = document.getElementById("name").value.trim();
+
+      if (!title || !content) {
+        alert("제목과 내용을 입력하세요!");
+        return;
+      }
+
+      const posts = getPosts();
+
+      if (postId) {
+        const idx = posts.findIndex(p => p.id == postId);
+        if (idx !== -1) {
+          posts[idx].title = title;
+          posts[idx].content = content;
+          posts[idx].name = name;
+          posts[idx].date = new Date().toLocaleString();
+        }
+      } else {
+        posts.unshift({
+          id: Date.now(),
+          name,
+          title,
+          content,
+          date: new Date().toLocaleString()
+        });
+      }
+
+      savePosts(posts);
+      location.href = "custMainpage.html";
+    });
+
+    // ✅ 삭제 버튼
+    document.getElementById("deleteBtn").addEventListener("click", () => {
+      if (!confirm("정말 이 글을 삭제하시겠습니까?")) return;
+
+      const posts = getPosts().filter(p => p.id != postId);
+      savePosts(posts);
+      alert("삭제되었습니다.");
+      location.href = "custMainpage.html";
+    });
+
+    // ✅ 목록으로 돌아가기
+    document.getElementById("backBtn").addEventListener("click", () => {
+      location.href = "custMainpage.html";
+    });
+  </script>
+</body>
+</html>

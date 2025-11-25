@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../img/로고.png">
+    <title>로그인</title>
+    <link rel="stylesheet" href="07_login.css">
+</head>
+<body>
+    <div class="minimal-login-wrapper">
+    <div class="minimal-login-card">
+        <p class="minimal-subtitle"><img src="../img/KakaoTalk_20251111_154721082.png" alt="logo" width="180px" ></p>
+        <h2 class="minimal-title">로그인</h2>
+        <form class="minimal-form">
+            <div class="minimal-input-group">
+                <input type="text" id="id" name="id" placeholder="아이디">
+                <span class="loginIdMsg" id="loginIdMsg"></span>
+            </div>
+            <div class="minimal-input-group">
+                <input type="password" id="password" name="password" placeholder="비밀번호">
+                <span class="loginPwMsg" id="loginPwMsg"></span>
+            </div>
+            <button type="submit" class="btn-minimal-login" id="btnLogin">로그인</button>
+        </form>
+        <div class="minimal-links">
+            <a href="changePwd.html" class="link-min">비밀번호 재설정</a>
+            <a href="08_sign_up.html" class="link-min">회원가입 하기</a>
+        </div>
+    </div>
+</div>
+<script src="login_sign_up.js"></script>
+<script src="07_login.js"></script>
+</body>
+</html>

@@ -1,0 +1,317 @@
+/* 기본 설정 */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+/* 헤더 */
+.header {
+    background-color: #3f51b5;
+    color: #fff;
+    padding: 40px 30px;
+    text-align: center;
+    border-bottom: 5px solid #ff6384;
+}
+
+.header h1 {
+    margin: 0 0 10px;
+    font-size: 2.5em;
+    font-weight: 700;
+}
+.header img{
+  display: block;
+}
+
+
+.header p {
+    font-size: 13px;
+    opacity: 0.9;
+    color: rgb(207, 206, 206);
+}
+
+/* 섹션 카드 */
+.card-section {
+    padding: 20px 30px;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    padding: 25px;
+    margin-bottom: 25px;
+    border: 1px solid #e0e0e0;
+}
+
+.card-title {
+    font-size: 1.6em;
+    color: #3f51b5;
+    margin-top: 0;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #e8eaf6;
+    padding-bottom: 10px;
+}
+
+.card-title .icon {
+    width: 28px;
+    height: 28px;
+    margin-right: 12px;
+}
+
+/* 차트 그리드 */
+.chart-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.chart-item {
+    text-align: center;
+    flex: 1;
+    min-width: 180px;
+    max-width: 220px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    border: 1px dashed #cfd8dc;
+}
+
+.chart-item h3 {
+    font-size: 1.1em;
+    color: #555;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.chart-item canvas {
+    max-height: 120px;
+    margin: 0 auto;
+}
+
+.chart-label {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: red;
+    margin-top: 10px;
+}
+
+.summary-text {
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #e64a19;
+    background-color: #ffe0b2;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-top: 20px;
+}
+
+/* 지역별 양극화 그리드 */
+.chart-grid-region {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.chart-item-horizontal h3 {
+    font-size: 1.1em;
+    color: #555;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.progress-bar-container {
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    height: 25px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar {
+    height: 100%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* 텍스트를 오른쪽으로 정렬 */
+    padding-right: 10px;
+    box-sizing: border-box;
+    transition: width 0.5s ease-in-out;
+}
+
+.progress-text {
+    color: #fff;
+    font-weight: bold;
+    font-size: 0.9em;
+    position: absolute; /* 텍스트를 바깥으로 빼서 배경색과 상관없이 보이게 */
+    right: 10px;
+}
+
+.sub-label {
+    display: block;
+    text-align: right;
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 5px;
+}
+
+.text-item-region {
+    text-align: center;
+    background-color: #e3f2fd;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px dashed #90caf9;
+}
+
+.text-item-region h3 {
+    font-size: 25px;
+    color: black;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.text-item-region p {
+    font-size: 25px;
+    font-weight: bold;
+    color: blue;
+    margin: 0;
+}
+.text-item-region p span {
+    color: blue;
+    font-size: 25px;
+}
+.text-item-region p> .span1{
+    font-size: 15px;
+    color: gray;
+}
+
+/* 공급 및 심리 그리드 */
+.chart-grid-supply {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+    margin-bottom: 20px;
+}
+
+.chart-item-supply {
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    border: 1px dashed #cfd8dc;
+}
+
+.chart-item-supply h3 {
+    font-size: 1.1em;
+    color: #555;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.chart-label-sub {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 10px;
+}
+
+/* YouTube 영상 그리드 */
+.youtube-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.youtube-link {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s, box-shadow 0.2s;
+    flex-direction: column; /* 썸네일 위에 텍스트 정보가 아래로 오도록 */
+    text-align: center;
+}
+
+.youtube-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.youtube-thumbnail {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.youtube-info {
+    padding: 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.youtube-info h3 {
+    font-size: 1.1em;
+    color: #d32f2f; /* YouTube 빨간색 */
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.youtube-info p {
+    font-size: 0.9em;
+    color: #777;
+    margin: 0;
+}
+
+/* 푸터 */
+.footer {
+    text-align: center;
+    padding: 25px;
+    background-color: #3f51b5;
+    color: #e0e0e0;
+    font-size: 0.9em;
+    border-top: 1px solid #ff6384;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2em;
+    }
+    .chart-grid, .chart-grid-region, .chart-grid-supply, .youtube-grid {
+        grid-template-columns: 1fr;
+    }
+    .chart-item, .chart-item-horizontal, .text-item-region, .chart-item-supply {
+        min-width: unset;
+        max-width: unset;
+    }
+    .youtube-link {
+        flex-direction: column;
+    }
+}

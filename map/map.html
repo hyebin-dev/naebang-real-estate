@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>내방 · 지도로 내방 찾기</title>
+    <link rel="icon" type="image/png" href="../img/로고.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- 아이콘 스프라이트: 페이지 내에서 바로 참조 (외부 /icons/*.svg 사용 안 함) -->
+    <svg
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      style="position:absolute;width:0;height:0;overflow:hidden"
+    >
+      <defs>
+        <symbol id="icon-all" viewBox="0 0 40 40">
+          <rect x="6" y="6" width="28" height="28" rx="6" class="nb-stroke" />
+          <rect x="11" y="11" width="8" height="8" rx="2" class="nb-stroke" />
+          <rect x="21" y="11" width="8" height="8" rx="2" class="nb-stroke" />
+          <rect x="11" y="21" width="8" height="8" rx="2" class="nb-stroke" />
+          <rect x="21" y="21" width="8" height="8" rx="2" class="nb-stroke nb-fill" />
+        </symbol>
+
+        <symbol id="icon-oneroom" viewBox="0 0 40 40">
+          <rect x="6" y="8" width="28" height="24" rx="3" class="nb-stroke" />
+          <line x1="20" y1="10" x2="20" y2="30" class="nb-stroke" />
+          <path d="M10 30 H16" class="nb-stroke" />
+          <path d="M24 30 H30" class="nb-stroke" />
+          <rect x="18" y="18" width="4" height="4" rx="1" class="nb-fill" />
+        </symbol>
+
+        <symbol id="icon-apartment" viewBox="0 0 40 40">
+          <rect x="10" y="6" width="20" height="26" rx="2.5" class="nb-stroke" />
+          <path d="M8 6 H32" class="nb-stroke" />
+          <rect x="12" y="10" width="4" height="4" rx="0.8" class="nb-fill" />
+          <rect x="18" y="10" width="4" height="4" rx="0.8" class="nb-fill" />
+          <rect x="24" y="10" width="4" height="4" rx="0.8" class="nb-fill" />
+          <rect x="12" y="17" width="4" height="4" rx="0.8" class="nb-fill" />
+          <rect x="18" y="17" width="4" height="4" rx="0.8" class="nb-fill" />
+          <rect x="24" y="17" width="4" height="4" rx="0.8" class="nb-fill" />
+          <rect x="18" y="22" width="4" height="8" class="nb-stroke" />
+        </symbol>
+
+        <symbol id="icon-house" viewBox="0 0 40 40">
+          <path d="M8 19 L20 8 L32 19" class="nb-stroke" />
+          <rect x="11" y="19" width="18" height="13" rx="2.5" class="nb-stroke" />
+          <rect x="17" y="13" width="6" height="4" rx="1" class="nb-fill" />
+          <rect x="13" y="21" width="5" height="5" rx="1" class="nb-fill" />
+          <rect x="22" y="21" width="5" height="5" rx="1" class="nb-fill" />
+          <rect x="18" y="21" width="4" height="9" class="nb-stroke" />
+        </symbol>
+
+        <symbol id="icon-officetel" viewBox="0 0 40 40">
+          <path d="M6 32 H34" class="nb-stroke" />
+          <rect x="12" y="6" width="16" height="24" rx="2.5" class="nb-stroke" />
+          <path d="M11 6 H29" class="nb-stroke" />
+          <rect x="14" y="10" width="4" height="4" rx="0.8" class="nb-fill" />
+          <rect x="20" y="10" width="4" height="4" rx="0.8" class="nb-fill" />
+          <rect x="14" y="16" width="4" height="4" rx="0.8" class="nb-fill" />
+          <rect x="20" y="16" width="4" height="4" rx="0.8" class="nb-fill" />
+          <rect x="14" y="22" width="4" height="4" rx="0.8" class="nb-fill" />
+          <rect x="20" y="22" width="4" height="4" rx="0.8" class="nb-fill" />
+        </symbol>
+
+        <!-- 하트 아이콘 (빈/채움) : 페이지 내부에서 <use href="#...">로 사용 -->
+        <symbol id="icon-heart-outline" viewBox="0 0 40 40">
+          <path
+            style="stroke:#66676A;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none"
+            d="M20 30 L11.5 22 C8.5 19.2 7 17 7 13.8 C7 10.7 9.3 8 12.7 8
+               C14.9 8 17.1 9.1 18.4 10.9 L20 13.1 L21.6 10.9
+               C22.9 9.1 25.1 8 27.3 8 C30.7 8 33 10.7 33 13.8
+               C33 17 31.5 19.2 28.5 22 Z"
+          />
+        </symbol>
+        <symbol id="icon-heart-filled" viewBox="0 0 40 40">
+          <path
+            style="fill:#FF7A2A;stroke:#FF7A2A;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+            d="M20 30 L11.5 22 C8.5 19.2 7 17 7 13.8 C7 10.7 9.3 8 12.7 8
+               C14.9 8 17.1 9.1 18.4 10.9 L20 13.1 L21.6 10.9
+               C22.9 9.1 25.1 8 27.3 8 C30.7 8 33 10.7 33 13.8
+               C33 17 31.5 19.2 28.5 22 Z"
+          />
+        </symbol>
+      </defs>
+    </svg>
+
+    <div id="app">
+      <!-- 헤더 -->
+      <header class="header">
+        <div class="header-content">
+          <div class="header-left">
+            <h1 class="site-title">
+              <button
+                type="button"
+                onclick="location.href='../main/01_main.html'"
+              >
+                <img
+                  src="../img/KakaoTalk_20251111_154721082.png"
+                  alt="부동산을 한눈에 내방"
+                />
+              </button>
+            </h1>
+
+            <div id="globalSearch">
+              <div class="search-box">
+                <input
+                  id="searchInput"
+                  placeholder="지역, 지하철, 대학, 단지, 매물번호"
+                />
+                <button
+                  id="searchButton"
+                  class="search-btn"
+                  type="button"
+                  aria-label="검색"
+                >
+                  <svg class="search-btn-icon" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="6" />
+                    <line x1="15" y1="15" x2="20" y2="20" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <nav class="nav-menu">
+            <ul class="menu1">
+              <li>
+                <a href="#categories" class="nav-item">🏠 내방찾기</a>
+                <ul class="submenu1">
+                  <li>
+                    <a href="../map/map.html">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-geo-alt-fill"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"
+                        />
+                      </svg>
+                      지도로 내방 찾기
+                    </a>
+                  </li>
+                  <li><a href="../favorites/favorites.html">❤️ 내가 찜한 목록</a></li>
+                  <li><a href="../estateData/estateData.html">📈 시장동향</a></li>
+                </ul>
+              </li>
+            </ul>
+
+            <ul class="menu2">
+              <li>
+                <a href="#" class="nav-item">📜 공지사항</a>
+                <ul class="submenu2">
+                  <li>
+                    <a href="../policy/이용약관.html">📄 이용약관</a>
+                  </li>
+                  <li>
+                    <a href="../policy/개인정보처리방침.html">🔒 개인정보처리방침</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+
+            <ul class="menu3">
+              <li>
+                <a href="#" class="nav-item">💬 커뮤니티</a>
+                <ul class="submenu3">
+                  <li>
+                    <a href="../policy/가이드라인.html">✅ 커뮤니티 가이드라인</a>
+                  </li>
+                  <li><a href="../main/01_main.html#post-card">🍯 꿀팁 보기</a></li>
+                  <li>
+                    <a href="../board/board.html">📝 자유게시판</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+
+            <ul class="menu4">
+              <li>
+                <a href="#" class="nav-item">📞 고객센터</a>
+                <ul class="submenu4">
+                  <li>
+                    <a href="../policy/자주묻는질문.html">❓ 자주묻는 질문</a>
+                  </li>
+                  <li>
+                    <a href="../board/custMainPage.html">☎️1:1문의</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <!-- 본문 -->
+      <main id="main">
+        <!-- 왼쪽 세로 네비 -->
+        <nav id="leftNav" aria-label="매물 유형 선택">
+          <div id="roomTypeTabs">
+            <button
+              class="room-type-tab active"
+              type="button"
+              data-category="ALL"
+            >
+              <svg class="nav-icon" viewBox="0 0 40 40">
+                <use href="#icon-all"></use>
+              </svg>
+              <span class="nav-label">전체</span>
+            </button>
+            <button class="room-type-tab" type="button" data-category="ONEROOM">
+              <svg class="nav-icon" viewBox="0 0 40 40">
+                <use href="#icon-oneroom"></use>
+              </svg>
+              <span class="nav-label">원/투룸</span>
+            </button>
+            <button class="room-type-tab" type="button" data-category="APT">
+              <svg class="nav-icon" viewBox="0 0 40 40">
+                <use href="#icon-apartment"></use>
+              </svg>
+              <span class="nav-label">아파트</span>
+            </button>
+            <button class="room-type-tab" type="button" data-category="VILLA">
+              <svg class="nav-icon" viewBox="0 0 40 40">
+                <use href="#icon-house"></use>
+              </svg>
+              <span class="nav-label">주택/빌라</span>
+            </button>
+            <button
+              class="room-type-tab"
+              type="button"
+              data-category="OFFICETEL"
+            >
+              <svg class="nav-icon" viewBox="0 0 40 40">
+                <use href="#icon-officetel"></use>
+              </svg>
+              <span class="nav-label">오피스텔</span>
+            </button>
+
+            <!-- 찜 목록: 외부 파일이 아닌 내부 심볼 사용 -->
+            <button
+              class="room-type-tab"
+              type="button"
+              id="favoriteToggleBtn"
+              data-category="FAVORITES"
+              title="찜한 매물 보기"
+            >
+              <svg class="nav-icon" viewBox="0 0 40 40">
+                <use href="#icon-heart-outline"></use>
+              </svg>
+              <span class="nav-label">찜 목록</span>
+            </button>
+          </div>
+        </nav>
+
+        <!-- 지도 + 사이드바 -->
+        <div id="layout">
+          <!-- 지도 위 툴바 -->
+          <div id="mainToolbar">
+            <button id="filterOpenBtn" class="nav-ctrl-btn" type="button">
+              필터
+            </button>
+            <button id="regionResetBtn" class="nav-ctrl-btn" type="button">
+              초기화
+            </button>
+          </div>
+
+          <div id="map" aria-label="매물 지도"></div>
+
+          <aside id="sidebar" aria-label="매물 목록">
+            <div id="sidebarTop">
+              <div class="sidebar-header-row">
+                <div>
+                  <h2 id="dongTitle">서울특별시 매물</h2>
+                  <p id="summary">매물을 불러오는 중...</p>
+                  <p id="regionPath">서울특별시 &gt; 전체 &gt; 전체</p>
+                </div>
+              </div>
+            </div>
+
+            <ul id="roomList"></ul>
+            <div id="pagination" aria-label="페이지 이동"></div>
+          </aside>
+
+          <!-- 필터 모달 -->
+          <div id="filterModal" class="hidden" role="dialog">
+            <div class="filter-modal-panel">
+              <div class="filter-modal-header">
+                <div class="filter-modal-title">필터</div>
+                <button
+                  id="filterCloseBtn"
+                  class="filter-modal-close"
+                  type="button"
+                  aria-label="필터 닫기"
+                >
+                  ×
+                </button>
+              </div>
+
+              <button
+                id="filterResetBtn"
+                class="filter-reset-all"
+                type="button"
+              >
+                모두 초기화
+              </button>
+
+              <section class="filter-section" aria-label="지역 필터">
+                <div class="filter-section-title">지역</div>
+
+                <div class="filter-region-block">
+                  <div class="filter-region-label">시/도</div>
+                  <div
+                    id="filterSidoChips"
+                    class="region-chip-group"
+                  ></div>
+                </div>
+
+                <div
+                  class="filter-region-block"
+                  id="filterSigunguRow"
+                >
+                  <div class="filter-region-label">시/군/구</div>
+                  <div
+                    id="filterSigunguChips"
+                    class="region-chip-group"
+                  ></div>
+                </div>
+
+                <div
+                  class="filter-region-block"
+                  id="filterDongRow"
+                >
+                  <div class="filter-region-label">읍/면/동</div>
+                  <div
+                    id="filterDongChips"
+                    class="region-chip-group"
+                  ></div>
+                </div>
+              </section>
+
+              <section class="filter-section" aria-label="거래 유형 필터">
+                <div class="filter-section-title">거래 유형</div>
+                <div
+                  id="dealTypeFilterChips"
+                  class="filter-chip-group"
+                ></div>
+              </section>
+
+              <section class="filter-section" aria-label="보증금 필터">
+                <div class="filter-section-title">보증금(만원)</div>
+                <div
+                  id="depositFilterChips"
+                  class="filter-chip-group"
+                ></div>
+              </section>
+
+              <section class="filter-section" aria-label="월세 필터">
+                <div class="filter-section-title">월세(만원)</div>
+                <div
+                  id="rentFilterChips"
+                  class="filter-chip-group"
+                ></div>
+              </section>
+
+              <section class="filter-section" aria-label="면적 필터">
+                <div class="filter-section-title">
+                  면적
+                  <button
+                    id="areaUnitToggle"
+                    class="area-unit-toggle"
+                    type="button"
+                  >
+                    m²
+                  </button>
+                </div>
+                <div
+                  id="areaFilterChips"
+                  class="filter-chip-group"
+                ></div>
+              </section>
+
+              <button
+                id="filterApplyBtn"
+                class="filter-apply-btn"
+                type="button"
+              >
+                필터 적용
+              </button>
+            </div>
+            <div class="filter-modal-backdrop"></div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Kakao SDK -->
+    <!-- 공개 레포용: 실제 키 대신 PLACEHOLDER -->
+    <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=__KAKAO_MAP_KEY__&libraries=clusterer"></script>
+
+
+    <!-- 앱 스크립트 -->
+    <script src="js/config.js" defer></script>
+    <script src="js/vworld.js" defer></script>
+    <script src="js/utils.js" defer></script>
+    <script src="js/map.js" defer></script>
+    <!-- 즐겨찾기 전역 유틸 (ui.js보다 먼저 로드) -->
+    <script src="js/auth-favorites.js" defer></script>
+    <script src="js/ui.js" defer></script>
+    <script src="js/filter-modal.js" defer></script>
+    <script src="js/main.js" defer></script>
+
+    <!-- 폴리곤 시인성 보강 헬퍼 -->
+    <script>
+      "use strict";
+
+      /* 폴리곤 시인성을 약간 보강하는 헬퍼 */
+      window.nbTunePolygon = function (poly) {
+        try {
+          if (!poly || typeof poly.setOptions !== "function") return;
+
+          poly.setOptions({
+            strokeWeight: 2,
+            strokeColor: "#ff6f00",
+            strokeOpacity: 0.9,
+            fillColor: "#ff7a2a",
+            fillOpacity: 0.22,
+            zIndex: 10,
+          });
+        } catch (_) {
+          /* no-op */
+        }
+      };
+
+      if (Array.isArray(window.nbPolygons)) {
+        window.nbPolygons.forEach(function (p) {
+          window.nbTunePolygon(p);
+        });
+      }
+    </script>
+  </body>
+</html>

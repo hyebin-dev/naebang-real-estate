@@ -1,0 +1,103 @@
+/* 화면 꽉 채우기*/
+    body, html {
+    margin: 0; /* 외부 여백 제거 */
+    padding: 0; /* 내부 여백 제거 */
+    box-sizing: border-box; /* 패딩과 보더가 너비/높이에 포함되도록 설정 */
+}
+    
+/* 전체 배경 설정: Hero 섹션과 동일한 그라데이션 */
+.minimal-login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+}
+
+/* 로그인 카드 (중앙 박스) */
+.minimal-login-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.95); /* 반투명 흰색 */
+    border-radius: 20px; /* 더 둥근 모서리 */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding-top: 0;
+}
+
+.minimal-title {
+    font-size: 32px;
+    font-weight: 800; /* 더 두꺼운 글꼴 */
+    color: #1e293b;
+    margin-bottom: 30px;
+    margin-top: 0;
+}
+
+
+/* 입력 필드 (라벨 없이 깔끔하게) */
+.minimal-input-group {
+    margin-bottom: 20px;
+}
+
+.minimal-input-group input {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid #e2e8f0;
+    border-radius: 30px; /* 필도 알약 모양 */
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.minimal-input-group input:focus {
+    border-color: #764ba2; /* 그라데이션 끝 색상 사용 */
+    box-shadow: 0 0 0 3px rgba(118, 75, 162, 0.2);
+    outline: none;
+}
+
+/* 로그인 버튼 */
+.btn-minimal-login {
+    width: 100%;
+    padding: 15px;
+    /* 그라데이션 배경을 버튼에도 적용 */
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 30px; /* 버튼 알약 모양 */
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 15px;
+}
+
+.btn-minimal-login:hover {
+    transform: translateY(-2px); /* 살짝 떠오르는 효과 */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 하단 링크 영역 */
+.minimal-links {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-around;
+    font-size: 14px;
+}
+
+.link-min {
+    color: #667eea; /* 그라데이션 시작 색상 사용 */
+    text-decoration: none;
+    transition: color 0.2s;
+    font-weight: 600;
+}
+
+.link-min:hover {
+    text-decoration: underline;
+    color: #764ba2;
+}
+.fail{
+    color: red;
+}

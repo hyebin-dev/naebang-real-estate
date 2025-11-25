@@ -1,0 +1,682 @@
+ /* body 기본 셋 */
+ body {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+line-height: 1.6;
+color: #333;
+background: #f8fafc;
+}
+
+/* 전체 보더박스 */
+* {
+box-sizing: border-box;
+}
+
+.gridBox{
+text-decoration: none;
+}
+/* Header */
+/* 상단메뉴라인 */
+.header {
+background: rgba(255, 255, 255, 0.95);
+backdrop-filter: blur(10px); /* 뒷배경 흐리게 */
+padding: 0 40px;
+padding-right: 0;
+box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+position: sticky;
+top: 0;
+z-index: 100;
+position: relative;
+}
+
+.header-content {
+max-width: 1830px;
+height: 100px;
+margin: 0 auto;
+display: flex;
+margin-left: 0;
+margin-right: 0;
+justify-content: space-between;
+align-items: center;
+z-index: 10;
+}
+
+/* 로고 */
+.site-title {
+font-size: 28px;
+font-weight: bold;
+}
+
+.site-title>button{
+background: none; /* 버튼을 a태그처럼 */
+border: 0;
+}
+.site-title>button:hover{
+cursor: pointer;
+}
+.site-title>button>img{
+width: 130px;
+height: 70px;
+}
+/* 컨텐츠 */
+.nav-menu {
+display: flex;
+gap: 30px;
+align-items: center;
+}
+
+/* 내방찾기 상세바 */
+.menu1{
+list-style: none;
+display: flex;
+}
+.menu1>li{
+position: relative; /* 부모 기반으로 메뉴 펼치기*/
+}
+.menu1>li:hover .submenu1{
+display: block;
+}
+.submenu1{
+list-style: none;
+font-weight: 700;
+position: absolute;
+width: 200px;
+text-align: center;
+top: 100%;
+left: -60%;
+display: none;
+background-color: #E3746B;
+padding: 10px 0;
+}
+.submenu1>li>a{
+text-decoration: none;
+color: white;
+}
+.submenu1>li>a:hover{
+color: orange;
+transition: color 0.3s ease;
+}
+.submenu1 svg{
+  color: red;
+}
+/* 공지사항 */
+.menu2{
+list-style: none;
+display: flex;
+margin: 0;
+padding: 0;
+}
+.menu2>li{
+position: relative; /* 부모 기반으로 메뉴 펼치기*/
+}
+.menu2>li:hover .submenu2{
+display: block;
+}
+.submenu2{
+list-style: none;
+font-weight: 700;
+position: absolute;
+width: 200px;
+text-align: center;
+top: 100%;
+left: -60%;
+display: none;
+background-color: #48e9ae;
+padding: 10px 0;
+}
+.submenu2>li>a{
+text-decoration: none;
+color: white;
+}
+.submenu2>li>a:hover{
+color: orange;
+transition: color 0.3s ease;
+}
+
+/* 커뮤니티 상세바 */
+.menu3{
+display: flex;
+padding: 0;
+}
+.menu3>li{
+position: relative; /* 부모 기반으로 메뉴 펼치기*/
+list-style: none;
+}
+.menu3>li:hover .submenu3{
+display: block;
+}
+.submenu3{
+list-style: none;
+font-weight: 700;
+position: absolute;
+width: 200px;
+text-align: center;
+top: 100%;
+left: -60%;
+display: none;
+background-color: #0D6EFD;
+padding: 20px 0;
+}
+.submenu3>li>a{
+text-decoration: none;
+color: white;
+}
+.submenu3>li>a:hover{
+color: orange;
+transition: color 0.3s ease;
+}
+
+/* 고객센터 메뉴바 */
+.menu4{
+display: flex;
+padding: 0;
+}
+.menu4>li{
+position: relative; /* 부모 기반으로 메뉴 펼치기*/
+list-style: none;
+}
+.menu4>li:hover .submenu4{
+display: block;
+}
+.submenu4{
+list-style: none;
+font-weight: 700;
+position: absolute;
+width: 190px;
+text-align: center;
+top: 100%;
+left: -60%;
+display: none;
+background-color: #14B8A6;
+padding: 10px 0;
+}
+.submenu4>li>a{
+text-decoration: none;
+color: white;
+}
+.submenu4>li>a:hover{
+color: orange;
+transition: color 0.3s ease;
+}
+
+/* 로그인 / 회원가입 */
+.menu5{
+display: flex;
+padding: 0;
+margin-left: 30px;
+}
+.menu5>li{
+position: relative; /* 부모 기반으로 메뉴 펼치기*/
+list-style: none;
+}
+/* 로그인버튼 */
+.login{
+text-decoration: none;
+color: black;
+font-weight: 700;
+margin-right: 5px;
+}
+.login:hover{
+  color: rgb(70, 69, 69);
+}
+.after::after{
+content: "";
+display: inline-block;
+position: relative;
+top: 1px;
+left: 2px;
+width: 1px; /* 선 1개만 */
+height: 13px; 
+background-color: black; /* 선 색깔 */
+margin: 0 10px; /* 선-글자 간격 */
+}
+/* 회원가입버튼 */
+.sign{
+text-decoration: none;
+color: black;
+font-weight: 700;
+}
+.sign:hover{
+  color: rgb(70, 69, 69);
+}
+/* 로그인 상태 회원정보창 */
+#userName{
+  color: rgb(94, 93, 93);
+  font-size: 15px;
+  font-weight: 700;
+  padding: 5px;
+  border: 1px solid gray;
+  border-radius: 15px;
+  margin-left: 20px;
+  margin-right: 2px;
+}
+#tmp{
+  color: rgb(32, 32, 32);
+  font-weight: 500;
+}
+/* 로그아웃 버튼 */
+#btnLogout{
+  display: block;
+  position: absolute;
+  font-size: 10px;
+  top: 5px;
+  right: 5px;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 15px;
+  cursor: pointer;
+}
+#btnLogout:hover{
+  color: rgb(80, 80, 80);
+  transform: scale(1.05);
+}
+
+/* 카테고리메뉴 */
+.nav-item {
+color: #64748b;
+text-decoration: none;
+font-weight: 700;
+transition: color 0.3s ease;
+}
+
+.nav-item:hover {
+color: rgb(108, 71, 3);
+}
+
+/* 상단화면 전체 */
+.hero {
+  height: 850px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+}
+
+/* 상단화면*/
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* 슬라이더 밖으로 나가는 것 방지*/
+  filter: brightness(0.7); /* 배경 좀 어둡게 */
+}
+/* 영상 */
+.mainVideo {
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100vh; 
+}
+/* ====================슬라이드 영상 부분 ====================*/
+.sliderContainer{
+  width: 100%;
+  height: 100%; /* 내가 설정한 높이만큼 */
+  overflow: hidden; /* 한 번에 하나의 영상만 보이게 */
+  position: relative;
+}
+.sliderInner{
+  display: flex; /* 가로 배치 */
+  width: 300%; /* 100% 씩 3개 삽입*/
+  height: 100%;
+  transition: transform 0.5s ease-in-out; /* 슬라이드시 부드럽게 전환 */
+}
+/* 영상 꽉 채우기 */
+.slide{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.leftBtn, .rightBtn { 
+  position: absolute;
+  top: 50%; /* 중앙에 위치 */
+  transform: translateY(-10%); /* y축으로 정확히 중앙 정렬 */
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  font-size: 80px;
+  font-weight: 500;
+  z-index: 5;
+}
+
+.leftBtn {
+  left: 20px; /* 왼쪽에서 20px */
+}
+.rightBtn {
+  right: 20px; /* 오른쪽에서 20px */
+}
+
+/* 내용 */
+.hero-content {
+  position: relative;
+  z-index: 4;
+  max-width: 800px;
+  padding: 0 40px;
+}
+/* 제목 */
+.hero-title {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+/* 설명 */
+.hero-subtitle {
+  font-size: 24px;
+  opacity: 0.95;
+  margin-bottom: 40px;
+}
+/* 버튼들 */
+.hero-buttons {
+  display: block;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+/* 둘러보기 버튼 */
+.btn-primary {
+  background: #ffffff;
+  color: black;
+  padding: 18.5px 32px;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+transform: translateY(-2px);
+box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* 공지사항 버튼 */
+.btn-secondary {
+background: transparent;
+color: white;
+padding: 16px 32px;
+font-size: 18px;
+font-weight: 600;
+border: 2px solid white;
+border-radius: 8px;
+cursor: pointer;
+transition: all 0.3s ease;
+text-decoration: none;
+display: inline-block;
+}
+
+.btn-secondary:hover {
+background: white;
+color: #1e40af;
+}
+
+/* 중간 상단(내집찾기) */
+.categories {
+padding: 80px 40px; /* 여백줘서 깔끔하게 */
+background: white;
+}
+
+.categories-content {
+max-width: 1200px;
+margin: 0 auto; /* 중앙정렬 */
+}
+
+/* 제목과 아래 내용 분리 */
+.section-title { 
+font-size: 36px;
+font-weight: bold;
+text-align: center;
+margin-bottom: 60px;
+color: #1e293b;
+}
+
+/* 각 컨텐츠 분류 */
+.categories-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 30px;
+}
+
+/* 각 컨텐츠 */
+.category-card {
+background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+padding: 40px 30px;
+border-radius: 16px;
+text-align: center;
+transition: all 0.3s ease;
+cursor: pointer;
+border: 2px solid transparent;
+}
+
+.category-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+border-color: #3b82f6;
+}
+
+/* 아이콘 */
+.category-icon {
+font-size: 48px;
+margin-bottom: 20px;
+}
+
+/* 제목 */
+.category-title {
+font-size: 24px;
+font-weight: bold;
+margin-bottom: 15px;
+color: #1e293b;
+}
+/* 게시글수 표시 */
+.category-count {
+font-size: 16px;
+color: #64748b;
+}
+
+/* ----------꿀팁 부분-------- */
+
+.recent-posts {
+padding: 80px 40px; /* 여백줘서 깔끔하게 */
+background: #f8fafc;
+}
+
+.recent-posts-content {
+max-width: 1200px;
+margin: 0 auto; /* 컨텐츠들 화면 중앙위치 */
+}
+
+/* 각 컨텐츠들 일정하게 배치 */
+.posts-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+gap: 30px;
+margin-top: 40px;
+}
+/* 각각 컨텐츠 기본 설정 */
+.post-card {
+background: white;
+border-radius: 12px;
+overflow: hidden;
+box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+transition: all 0.3s ease;
+}
+
+.post-card:hover {
+transform: translateY(-3px);
+box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* 컨텐츠 상단 이미지 영역 */
+.post-image {
+width: 100%;
+height: 200px;
+background: linear-gradient(45deg, #667eea, #764ba2);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 48px;
+color: white;
+}
+.post-image_1{
+  font-size: 25px;
+  font-weight: 700;
+  color: red;
+}
+
+.post-content {
+padding: 25px;
+}
+
+.recent-posts a{
+text-decoration: none;
+}
+
+/* 내용 최상단 소제목 */
+.post-category {
+font-size: 12px;
+color: #3b82f6;
+font-weight: 600;
+text-transform: uppercase;
+margin-bottom: 10px;
+}
+/* 내용 제목 */
+.post-title {
+font-size: 20px;
+font-weight: bold;
+margin-bottom: 10px;
+color: #1e293b;
+line-height: 1.3;
+}
+
+/* 내용 설명 */
+.post-excerpt {
+font-size: 14px;
+color: #64748b;
+margin-bottom: 15px;
+line-height: 1.5;
+}
+/* 부속 정보 */
+.post-meta {
+display: flex;
+justify-content: space-between;
+align-items: center;
+font-size: 12px;
+color: #94a3b8;
+}
+
+/* 사이트 소개 영역*/
+.footer {
+background: #1e293b;
+color: white;
+padding: 60px 40px 30px;
+}
+
+/* 사이트소개영역 최하단 제외 기본 설정 */
+.footer-content {
+max-width: 1200px;
+margin: 0 auto;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 40px;
+}
+/* 사이트소개 제목 */
+.footer-section h3 {
+font-size: 18px;
+margin-bottom: 20px;
+color: white;
+}
+/* 내용 */
+.footer-section p, .footer-section a {
+color: #94a3b8;
+text-decoration: none;
+margin-bottom: 10px;
+display: block;
+}
+
+.footer-section a:hover {
+color: white;
+}
+
+/* 최하단영역 */
+.footer-bottom {
+text-align: center;
+margin-top: 40px;
+padding-top: 20px;
+border-top: 1px solid #374151;
+color: #94a3b8;
+}
+
+/* 위로가기 버튼 */
+.scroll-top{
+  position: fixed; /* 늘 같은 위치 고정 */
+  bottom: 15px;
+  right: 20px;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 3px 18px;
+  border: 1px solid white;
+  background-color: white;
+  color: rgb(54, 54, 54);
+  text-decoration: none;
+  border-radius: 50%;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);;
+}
+/* 위로가기 클릭 시 부드럽게 올라감 */
+html{ 
+    scroll-behavior: smooth;
+}
+/* 모바일버전 최적화 */
+@media (max-width: 768px) {
+.hero-title {
+  font-size: 32px;
+}
+
+.hero-subtitle {
+  font-size: 18px;
+}
+
+.section-title {
+  font-size: 28px;
+}
+
+.header-content {
+  flex-direction: column;
+  gap: 20px;
+}
+
+.nav-menu {
+  gap: 20px;
+}
+
+.hero-buttons {
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-primary, .btn-secondary {
+  width: 200px;
+}
+}
+@view-transition {
+    navigation: auto; 
+}
+
+#who {
+  border: 1px solid #333; /* 테두리 */
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #f0f0f0; /* 원하는 배경색 */
+  margin-right: 10px;
+}
+.hidden{
+  display: none;
+}

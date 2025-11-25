@@ -1,0 +1,16 @@
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.metadata/
+
+# VWorld 로컬 키 (실제 키 넣는 파일, 레포에는 없음)
+map/js/vworld.local.js
+
+# 대용량/민감 데이터 (로컬 전용 매물/실거래 데이터)
+map/rooms-all.json
+map/region-tree-seoul.json
+estateData/data/
+
+# 동영상 리소스
+videos/

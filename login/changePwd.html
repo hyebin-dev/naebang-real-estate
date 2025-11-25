@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../img/로고.png">
+    <title>비밀번호 재설정</title>
+    <link rel="stylesheet" href="changePwd.css">
+</head>
+<body>
+    <div id="Container">
+    <form id="Form">
+        <h2>🔒비밀번호 재설정</h2>
+        <div>
+            <label for="userEmail">이메일 주소</label>
+            <input type="email" id="userEmail" placeholder="이메일 입력">
+            <p id="emailMsg" class="emailMsg"></p>
+        </div>
+        <button type="submit">사용자 정보 확인</button>
+    </form>
+
+    <form id="resetPasswordForm" style="display: none;">
+        <h2>🔒비밀번호 변경</h2>
+        <div>
+            <label for="newPassword">새 비밀번호</label>
+            <input type="password" id="newPassword" placeholder="변경 할 비밀번호 입력(8자 이상, 문자/숫자/특수문자 포함)">
+            <p id="newPwdMsg" class="error-message"></p>
+        </div>
+
+        <div>
+            <label for="confirmPassword">비밀번호 확인</label>
+            <input type="password" id="checkPassword" placeholder="변경 비밀번호 재 입력">
+            <p id="newPwdCheckMsg" class="error-message"></p>
+        </div>
+        <button type="submit">비밀번호 변경 완료</button>
+    </form>
+    <div class="login-redirect">
+        변경하지 않고 바로 로그인 하기 <a href="07_login.html" class="link-login">로그인</a>
+    </div>
+</div>
+
+<style>
+    .error-message {
+        color: red;
+        font-size: 0.9em;
+        margin-top: 5px; 
+    }
+</style>
+<script src="login_sign_up.js"></script>
+<script src="changePwd.js"></script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!doctype html>
+<!-- favorites/favorites.html : 사용자가 찜한 매물 목록을 보여주는 페이지 마크업입니다. -->
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>내방 · 내가 찜한 목록</title>
+
+    <!-- 공통 스타일 -->
+    <link rel="stylesheet" href="../style.css" />
+    <!-- 찜 목록 전용 스타일 -->
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="icon" type="image/png" href="../img/로고.png" />
+  </head>
+  <body>
+    <!-- 하트 아이콘 스프라이트 정의 -->
+    <svg
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      style="position:absolute;width:0;height:0;overflow:hidden"
+    >
+      <defs>
+        <symbol id="icon-heart-outline" viewBox="0 0 40 40">
+          <path
+            style="stroke:#66676A;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none"
+            d="M20 30 L11.5 22 C8.5 19.2 7 17 7 13.8 C7 10.7 9.3 8 12.7 8
+               C14.9 8 17.1 9.1 18.4 10.9 L20 13.1 L21.6 10.9
+               C22.9 9.1 25.1 8 27.3 8 C30.7 8 33 10.7 33 13.8
+               C33 17 31.5 19.2 28.5 22 Z"
+          />
+        </symbol>
+        <symbol id="icon-heart-filled" viewBox="0 0 40 40">
+          <path
+            style="fill:#FF7A2A;stroke:#FF7A2A;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+            d="M20 30 L11.5 22 C8.5 19.2 7 17 7 13.8 C7 10.7 9.3 8 12.7 8
+               C14.9 8 17.1 9.1 18.4 10.9 L20 13.1 L21.6 10.9
+               C22.9 9.1 25.1 8 27.3 8 C30.7 8 33 10.7 33 13.8
+               C33 17 31.5 19.2 28.5 22 Z"
+          />
+        </symbol>
+      </defs>
+    </svg>
+
+    <!-- 상단 헤더 -->
+    <header class="page-header">
+      <div class="header-inner">
+        <div class="header-left">
+          <button
+            type="button"
+            class="brand"
+            onclick="location.href='../main/01_main.html'"
+          >
+            <img
+              src="../img/KakaoTalk_20251111_154721082.png"
+              alt="부동산을 한눈에 내방"
+              class="brand-logo"
+            />
+          </button>
+          <h1 class="visually-quiet-title">내가 찜한 목록</h1>
+        </div>
+
+        <!-- 글로벌 내비게이션 -->
+        <nav class="nav-menu">
+          <!-- 내방찾기 -->
+          <ul class="menu1">
+            <li>
+              <a href="#categories" class="nav-item">🏠 내방찾기</a>
+              <ul class="submenu1">
+                <li>
+                  <a href="../map/map.html">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-geo-alt-fill"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"
+                      />
+                    </svg>
+                    지도로 내방 찾기
+                  </a>
+                </li>
+                <li><a href="../favorites/favorites.html">❤️ 내가 찜한 목록</a></li>
+                <li><a href="../estateData/estateData.html">📈 시장동향</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <!-- 공지사항 -->
+          <ul class="menu2">
+            <li>
+              <a href="#" class="nav-item">📜 공지사항</a>
+              <ul class="submenu2">
+                <li><a href="../policy/이용약관.html">📄 이용약관</a></li>
+                <li><a href="../policy/개인정보처리방침.html">🔒 개인정보처리방침</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <!-- 커뮤니티 -->
+          <ul class="menu3">
+            <li>
+              <a href="#" class="nav-item">💬 커뮤니티</a>
+              <ul class="submenu3">
+                <li><a href="../policy/가이드라인.html">✅ 커뮤니티 가이드라인</a></li>
+                <li><a href="../main/01_main.html#post-card">🍯 꿀팁 보기</a></li>
+                <li><a href="../board/board.html">📝 자유게시판</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <!-- 고객센터 -->
+          <ul class="menu4">
+            <li>
+              <a href="#" class="nav-item">📞 고객센터</a>
+              <ul class="submenu4">
+                <li><a href="../policy/자주묻는질문.html">❓ 자주묻는 질문</a></li>
+                <li><a href="../board/custMainPage.html">☎️ 1:1문의</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- 상단 히어로 영역 -->
+    <section class="hero">
+      <div class="hero-inner">
+        <nav class="breadcrumbs">
+          <a href="../main/01_main.html">홈</a>
+          <span>›</span>
+          <span>내방찾기</span>
+          <span>›</span>
+          <span class="current">내가 찜한 목록</span>
+        </nav>
+        <div class="hero-heading">
+          <h2 class="hero-title">내가 찜한 목록</h2>
+          <p class="hero-sub">내가 찜해 둔 매물만 모아서 한눈에 볼 수 있어요.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 본문: 필터 + 카드 리스트 -->
+    <main id="main">
+      <section class="shell fav-main">
+        <!-- 유형 필터 -->
+        <section class="fav-filter">
+          <button class="fav-filter-btn is-active" data-filter="all">전체</button>
+          <button class="fav-filter-btn" data-filter="one_two">원/투룸</button>
+          <button class="fav-filter-btn" data-filter="apt">아파트</button>
+          <button class="fav-filter-btn" data-filter="villa">주택/빌라</button>
+          <button class="fav-filter-btn" data-filter="officetel">오피스텔</button>
+        </section>
+
+        <!-- 찜한 방 카드 리스트 -->
+        <section class="fav-list-wrapper">
+          <p id="fav-empty" class="fav-empty" hidden>
+            아직 찜한 방이 없습니다.<br />
+            지도로 마음에 드는 방을 찜해 보세요.
+          </p>
+
+          <div id="fav-list" class="fav-list">
+            <!-- JS에서 채워지는 영역 -->
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <!-- 찜 상태 관리 스크립트 -->
+    <script src="../map/js/auth-favorites.js"></script>
+    <!-- 이 페이지 전용 스크립트 -->
+    <script src="favorites-page.js"></script>
+  </body>
+</html>
